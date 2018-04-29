@@ -11,7 +11,7 @@ Upon investigation over the past number of weeks it has become clear that severa
 Combining some research of how others have tackled this problem with a lot of learning around basic definitions of libraries and what they can offer for data analysis, led me to a common approach adopted by many. These analysts have used combinations of the Numpy, Pandas, Matplotlib and Seaborn imported libraries and some basic python commands to generate strong analyses and inflenced me to conduct my analysis in this way using basic statistical information and some relevant graphical plotting. My research and influences for this project are listed in Initial Research.
 
 ## Getting started
-In order to get started in earnest I first began by reading my data file into Python. I found through research that a common and simple method to do this was by using the import csv library. To ensure I was indeed reading the correct file, I ran a simple test to check the first number of lines using the .head() command. This validated I was reading the correct file. You can find my attempts to get started in the First Steps Summary file
+In order to get started in earnest I first began by reading my data file into Python. I found through research that a common and simple method to do this was by using the import csv library. To ensure I was indeed reading the correct file, I ran a simple test to check the first number of lines using the .head() command. This validated I was reading the correct file. You can find my attempts to get started 
 
 ## Investigative method
 
@@ -70,21 +70,24 @@ We need to find ways to graphically represent the data in order to better spot p
 #### Box plotting
 Looking at each variable individually can help us see interesting trends among the various species to help identify them from each other. Simple box plots for each measurement variable can show very clearly the separation and grouping of the various species when analysed by measurement variables in turn. (See Figures 1-4)
 
-sbn.boxplot(x="Species",y="SepalLengthCm",data=data)
-sbn.boxplot(x="Species",y="SepalWidthCm",data=data)
-sbn.boxplot(x="Species",y="PetalLengthCm",data=data)
-sbn.boxplot(x="Species",y="PetalWidthCm",data=data)
+sbn.boxplot(x="Species",y="SepalLengthCm",data=data) # Figure 1:  Visual confirmation of Sepal length distinguishable across 3 species
+sbn.boxplot(x="Species",y="SepalWidthCm",data=data) # Figure 2: Visual confirmation of Sepal width indistinguishable between VER/VIR
+sbn.boxplot(x="Species",y="PetalLengthCm",data=data) # Figure 3: Visual confirmation of large variance in Virginica relative to Setosa
+sbn.boxplot(x="Species",y="PetalWidthCm",data=data) # Figure 4 Visual confirmation of large variance in Virginica
 
 #### Facet Grids
 Having looked at the measurement variables individually plotted, now we can progress into plotting 2 at a time. Using Facet Grids we can plot each of the species simply by looking at 2 of the 4 measurements. Some obvious examples to plot are Sepal v Sepal, Petal v Petal, Length v Length, Width v Width. (See Figures 5-8)
 
-Here a very interesting correlation comes to the fore, showing that the 3 species can be easily categorised into distinctive species when considering only Petal length and Petal width. (see Figure 6)
+Here a very interesting correlation comes to the fore, showing that the 3 species can be easily categorised into distinctive species when considering only Petal length and Petal width. (see Figure 6).
 
-sbn.FacetGrid(data,hue="Species",size=6).map(plt.scatter, "SepalLengthCm", "SepalWidthCm").add_legend()
-sbn.FacetGrid(data,hue="Species",size=6).map(plt.scatter, "PetalLengthCm", "PetalWidthCm").add_legend()
-sbn.FacetGrid(data,hue="Species",size=6).map(plt.scatter, "SepalLengthCm", "PetalLengthCm").add_legend()
-sbn.FacetGrid(data,hue="Species",size=6).map(plt.scatter, "SepalWidthCm", "PetalWidthCm").add_legend()
+sbn.FacetGrid(data,hue="Species",size=6).map(plt.scatter, "SepalLengthCm", "SepalWidthCm").add_legend() # Figure 5
+sbn.FacetGrid(data,hue="Species",size=6).map(plt.scatter, "PetalLengthCm", "PetalWidthCm").add_legend() # Figure 6
+sbn.FacetGrid(data,hue="Species",size=6).map(plt.scatter, "SepalLengthCm", "PetalLengthCm").add_legend() # Figure 7
+sbn.FacetGrid(data,hue="Species",size=6).map(plt.scatter, "SepalWidthCm", "PetalWidthCm").add_legend() # Figure 8
 
 #### Pair Plots
-A more advanced technique for plotting all 3 species of iris flower against all combinations of multiple measurement variables together, the use of a pair plot will confirm the work done by our Facet Grids for the combinations specified above, but also test other less obvious combinations for correlation.
+A more advanced technique for plotting all 3 species of iris flower against all combinations of multiple measurement variables together, the use of a pair plot will confirm the work done by our Facet Grids for the combinations specified above, but also test other less obvious combinations for correlation. 
 
+sbn.pairplot(data, hue="Species",size=3, diag_kind="hist") # Figure 9
+
+Running the PairPlot above using the seaborn library allows us to generate Figure 9 and confirm our hypothesis surrounding the correlation between Petal Length and Petal Width being the clearest indicator across the 3 species when attempting to classify an unknown iris sample.

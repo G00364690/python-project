@@ -17,14 +17,14 @@ In order to get started in earnest I first began by reading my data file into Py
 
 ### Method 1
 As highlighted in Initial Research, the consensus methods of creating a data analysis tend to begin with basic concepts such as reading from a file of data, and performing some basic statistical analysis of the data within. Referenced in Further Research.py, my initial pass I focused on
-1. Mean
-2. Min
-3. Max
-4. Variance
-5. Standard Deviation
-6. Count
+1. Mean - using numpy.mean()
+2. Min - using numpy.min()
+3. Max - using numpy.max()
+4. Variance - using numpy.var()
+5. Standard Deviation - using numpy.std()
+6. Count - using numpy.count_nonzero()
 
 A very high level commentary can be formed based on these statistical findings, but at this very raw level it is difficult without a strong flair for statistics to truly draw and any real conclusions, so we need a more robust visualization technique to help us uncover what the data is really telling us about the entities it summarizes.
 
 ### Method 2
-We need to find ways to 
+We need to find ways to graphically represent the data in order to better spot patterns with the naked eye.  

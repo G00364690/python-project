@@ -1,7 +1,7 @@
-##What’s been written about the Iris Data set?
+## What’s been written about the Iris Data set?
 The data set was created by Fisher for his 1936 paper entitled: “the use of multiple measurements in taxonomic problems”.   The data is 50 samples from each of 3 related species of iris flower. The three species are setosa, sersicolor and virginica. Four features were measured: Sepal length, Sepal width, Petal length and Petal width. The fifth attribute to analyse each data line is the species or class.
 
-##Some examples of good analyses at a quick search (I have found these are clearest in Kaggle):
+## Some examples of good analyses at a quick search (I have found these are clearest in Kaggle):
 
 1.	https://www.kaggle.com/danalexandru/simple-analysis-of-iris-dataset
 Simple analysis of the data set. 
@@ -40,7 +40,7 @@ Using seaborn and pairplotting to discover the linear correlation between Petal 
 
 Using eigenvalues to plot eigenvectors and show 3D modelling of the data. (advanced)
 
-##First learnings
+## First learnings
 Introduction to all: http://josephcslater.github.io/scipy-numpy-matplotlib-pylab.html
 Pandas v NumPy: https://stackshare.io/stackups/pandas-vs-numpy
 
@@ -74,3 +74,13 @@ https://seaborn.pydata.org/generated/seaborn.pairplot.html
 k-nearest neighbors algorithm. In pattern recognition, the k-nearest neighbors algorithm (k-NN) is a non-parametricmethod used for classification and regression. In both cases, the input consists of the k closest training examples in the feature space.
 https://en.wikipedia.org/wiki/K-nearest_neighbors_algorithm
 © 2018 GitHub, Inc.
+
+## Further Development of ideas
+
+Data Frames: http://www.datasciencemadesimple.com/get-list-column-headers-column-name-python-pandas/
+
+Visual Analysis libraries: 
+The consenus visual analysis package appears to be Seaborn. Boxplotting, FacetGrid and Pairplotting can show the relationship between 3 different species when comparing multiple variables.
+Boxplot documentation: https://seaborn.pydata.org/generated/seaborn.boxplot.html
+FacetGrid documentation: https://seaborn.pydata.org/generated/seaborn.FacetGrid.html
+PairPlot documentation: https://seaborn.pydata.org/generated/seaborn.pairplot.html

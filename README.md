@@ -10,6 +10,13 @@ Upon investigation over the past number of weeks it has become clear that severa
 ## Investigative sources
 Combining some research of how others have tackled this problem with a lot of learning around basic definitions of libraries and what they can offer for data analysis, led me to a common approach adopted by many. These analysts have used combinations of the Numpy, Pandas, Matplotlib and Seaborn imported libraries and some basic python commands to generate strong analyses and inflenced me to conduct my analysis in this way using basic statistical information and some relevant graphical plotting. My research and influences for this project are listed in Research.md.
 
+## Instructions to user
+1. Download Anaconda
+2. Open Final Analysis.py
+3. Run Final Analysis.py
+4. Open iPython terminal and select any boxplot, facetgrid or pairplot and paste it in
+5. Run plt.show() to generate any graphs
+
 ## Getting started
 In order to get started in earnest I first began by reading my data file into Python. I found through research that a common and simple method to do this was by using the import csv library. To ensure I was indeed reading the correct file, I ran a simple test to check the first 10 lines using the .head(10) command. This validated I was reading the correct file. You can find reference to this in Final Analysis.py
 

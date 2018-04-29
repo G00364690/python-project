@@ -8,10 +8,23 @@ The initial impression of the project is to break the requirements down into bit
 Upon investigation over the past number of weeks it has become clear that several packages available for import into anaconda will best fulfil the brief of this project. Initially focusing on the scripting elements of the course led me to investigate writing my own functions. With time and reflection I came to the conclusion that the point of this project was to begin to think bigger and discover the power of python and it's associated libraries for data analysis.
 
 ## Investigative sources
-Combining some research of how others have tackled this problem with a lot of learning around basic definitions of libraries and what they can offer for data analysis, led me to a common approach adopted by many. These analysts have used combinations of the Numpy, Pandas, Matplotlib and Seaborn imported libraries and some basic python commands to generate strong analyses and inflenced me to conduct my analysis in this way using basic statistical information and some relevant graphical plotting. My research and influences for this project are listed in Initial Research.
+Combining some research of how others have tackled this problem with a lot of learning around basic definitions of libraries and what they can offer for data analysis, led me to a common approach adopted by many. These analysts have used combinations of the Numpy, Pandas, Matplotlib and Seaborn imported libraries and some basic python commands to generate strong analyses and inflenced me to conduct my analysis in this way using basic statistical information and some relevant graphical plotting. My research and influences for this project are listed in Research.md.
 
 ## Getting started
-In order to get started in earnest I first began by reading my data file into Python. I found through research that a common and simple method to do this was by using the import csv library. To ensure I was indeed reading the correct file, I ran a simple test to check the first number of lines using the .head() command. This validated I was reading the correct file. You can find my attempts to get started 
+In order to get started in earnest I first began by reading my data file into Python. I found through research that a common and simple method to do this was by using the import csv library. To ensure I was indeed reading the correct file, I ran a simple test to check the first 10 lines using the .head(10) command. This validated I was reading the correct file. You can find reference to this in Final Analysis.py
+
+import numpy as np
+import pandas as pd
+import matplotlib as pl
+import matplotlib.pyplot as plt
+import seaborn as sbn
+import subprocess
+import csv
+
+data = pd.read_csv("data/iris.csv", header = 0)
+data = data.reset_index()
+data.head(10)
+print(data.head(10))
 
 ## Investigative method
 
@@ -64,7 +77,7 @@ Petal width: Setosa 0.107 Versicolor 0.196 Virginica 0.272
 
 At this very raw level it is difficult without a strong flair for statistics to truly draw and any real conclusions, so we need a more robust visualization technique to help us uncover what the data is really telling us about the entities it summarizes.
 
-### Method 2
+### Method 2 - Graphical Analysis
 We need to find ways to graphically represent the data in order to better spot patterns with the naked eye. 
 
 #### Box plotting
@@ -91,3 +104,12 @@ A more advanced technique for plotting all 3 species of iris flower against all 
 sbn.pairplot(data, hue="Species",size=3, diag_kind="hist") # Figure 9
 
 Running the PairPlot above using the seaborn library allows us to generate Figure 9 and confirm our hypothesis surrounding the correlation between Petal Length and Petal Width being the clearest indicator across the 3 species when attempting to classify an unknown iris sample.
+
+## Conclusion
+### Statistical Analysis
+Statistically speaking the data appeared to tell a certain story. Relatively low variances on Petal Widths for all 3 species, plus Petal Lengths (with the exception of Virginica), both coupled with distinctive mean values for all 3 species indicated that Petals would be the key to classification given the relative lack of distinction with Sepals.
+
+### Graphical Analysis
+Using the learnings from statistical analysis section it was an obvious next step to view each measurement variable independently and look for visual confirmation of different species one variable at a time. Boxplots clearly showed the most powerful variables in this regard were Petal Lengths and Widths. Using Statistical Analysis, the only conccern with this hypothesis is the clear overlap between the Min of the Virginica and the Max of the Versicolor species.
+
+Using Facet Grids to prove that (for the data set in question) the Petal Widths for Versicolor and Virginica correlate to the Petal Lengths we can see using Figure 6 that the 3 species are clearly distinguishable when considering only Petal lengths and Petal widths.

@@ -15,7 +15,7 @@ In order to get started in earnest I first began by reading my data file into Py
 
 ## Investigative method
 
-### Method 1
+### Method 1 - Statistical Analysis
 As highlighted in Initial Research, the consensus methods of creating a data analysis tend to begin with basic concepts such as reading from a file of data, and performing some basic statistical analysis of the data within. Referenced in Further Research.py, my initial pass I focused on
 1. Mean - using numpy.mean()
 2. Min - using numpy.min()
@@ -27,38 +27,64 @@ As highlighted in Initial Research, the consensus methods of creating a data ana
 A very high level commentary can be formed based on these statistical findings, suggesting that:
 
 #### Mean
-Sepal Length: Setosa 5.006 Vericolor 5.936 Virgenica 6.588
-Sepal Width: Setosa 3.42 Vericolor 2.77 Virgenica 2.974
-Petal Length: Setosa 1.465 Vericolor 4.26 Virgenica 5.552
-Petal width: Setosa 0.245 Vericolor 1.326 Virgenica 2.026
+Sepal Length: Setosa 5.006 Versicolor 5.936 Virginica 6.588
+Sepal Width: Setosa 3.42 Versicolor 2.77 Virginica 2.974
+Petal Length: Setosa 1.465 Versicolor 4.26 Virginica 5.552
+Petal width: Setosa 0.245 Versicolor 1.326 Virginica 2.026
 
-The Setosa species should be identifiable from the others primarily via the differences in the mean Petal lengths and widths. It holds that the Vericolor and 
+The mean analysis tells us the Setosa species should be identifiable from the others with the naked eye primarily via the differences in the mean Petal lengths and widths. It holds that the Versicolor and Virginica species would not be so easily identifiable, but nonetheless more identifiable through the Petal measurements as compared to the Sepal measurements.
 
 #### Min
-Sepal Length: Setosa 4.3 Vericolor 4.9 Virgenica 4.9
-Sepal Width: Setosa 2.3 Vericolor 2.0 Virgenica 2.2
-Petal Length: Setosa 1.0 Vericolor 3.0 Virgenica 4.5
-Petal width: Setosa 0.1 Vericolor 1.0 Virgenica 1.4
+Sepal Length: Setosa 4.3 Versicolor 4.9 Virginica 4.9
+Sepal Width: Setosa 2.3 Versicolor 2.0 Virginica 2.2
+Petal Length: Setosa 1.0 Versicolor 3.0 Virginica 4.5
+Petal width: Setosa 0.1 Versicolor 1.0 Virginica 1.4
 
 #### Max
-Sepal Length: Setosa 5.8 Vericolor 7.0 Virgenica 7.9
-Sepal Width: Setosa 4.4 Vericolor 3.4 Virgenica 3.8
-Petal Length: Setosa 1.9 Vericolor 5.1 Virgenica 6.9
-Petal width: Setosa 0.6 Vericolor 1.8 Virgenica 2.5
+Sepal Length: Setosa 5.8 Versicolor 7.0 Virginica 7.9
+Sepal Width: Setosa 4.4 Versicolor 3.4 Virginica 3.8
+Petal Length: Setosa 1.9 Versicolor 5.1 Virginica 6.9
+Petal width: Setosa 0.6 Versicolor 1.8 Virginica 2.5
 
-#### Var
-Sepal Length: Setosa 0.124 Vericolor 0.261 Virgenica 0.396
-Sepal Width: Setosa 0.145 Vericolor 0.097 Virgenica 0.102
-Petal Length: Setosa 0.03 Vericolor 0.216 Virgenica 0.298
-Petal width: Setosa 0.011 Vericolor 0.038 Virgenica 0.074
+The min-max of the data set again show that the Versicolour and the Virginica are virtually indistinguishable to the naked eye. While the Virginica is larger by all measurements in the mean, it also holds true for the min and max. Given the min and the max overlap signigicantly we need more information to adequately analyse our data set.
 
-#### Std
-Sepal Length: Setosa 0.352 Vericolor 0.511 Virgenica 0.629
-Sepal Width: Setosa 0.381 Vericolor 0.311 Virgenica 0.319
-Petal Length: Setosa 0.173 Vericolor 0.465 Virgenica 0.546
-Petal width: Setosa 0.107 Vericolor 0.196 Virgenica 0.272
+#### Variance
+Sepal Length: Setosa 0.124 Versicolor 0.261 Virginica 0.396
+Sepal Width: Setosa 0.145 Versicolor 0.097 Virginica 0.102
+Petal Length: Setosa 0.03 Versicolor 0.216 Virginica 0.298
+Petal width: Setosa 0.011 Versicolor 0.038 Virginica 0.074
+
+The very low variance in general across the 3 species with respect to Petal measurements would lead us to assume the best correlations lie there. 
+
+#### Standard Deviation
+Sepal Length: Setosa 0.352 Versicolor 0.511 Virginica 0.629
+Sepal Width: Setosa 0.381 Versicolor 0.311 Virginica 0.319
+Petal Length: Setosa 0.173 Versicolor 0.465 Virginica 0.546
+Petal width: Setosa 0.107 Versicolor 0.196 Virginica 0.272
 
 At this very raw level it is difficult without a strong flair for statistics to truly draw and any real conclusions, so we need a more robust visualization technique to help us uncover what the data is really telling us about the entities it summarizes.
 
 ### Method 2
-We need to find ways to graphically represent the data in order to better spot patterns with the naked eye.  
+We need to find ways to graphically represent the data in order to better spot patterns with the naked eye. 
+
+#### Box plotting
+Looking at each variable individually can help us see interesting trends among the various species to help identify them from each other. Simple box plots for each measurement variable can show very clearly the separation and grouping of the various species when analysed by measurement variables in turn. (See Figures 1-4)
+
+sbn.boxplot(x="Species",y="SepalLengthCm",data=data)
+sbn.boxplot(x="Species",y="SepalWidthCm",data=data)
+sbn.boxplot(x="Species",y="PetalLengthCm",data=data)
+sbn.boxplot(x="Species",y="PetalWidthCm",data=data)
+
+#### Facet Grids
+Having looked at the measurement variables individually plotted, now we can progress into plotting 2 at a time. Using Facet Grids we can plot each of the species simply by looking at 2 of the 4 measurements. Some obvious examples to plot are Sepal v Sepal, Petal v Petal, Length v Length, Width v Width. (See Figures 5-8)
+
+Here a very interesting correlation comes to the fore, showing that the 3 species can be easily categorised into distinctive species when considering only Petal length and Petal width. (see Figure 6)
+
+sbn.FacetGrid(data,hue="Species",size=6).map(plt.scatter, "SepalLengthCm", "SepalWidthCm").add_legend()
+sbn.FacetGrid(data,hue="Species",size=6).map(plt.scatter, "PetalLengthCm", "PetalWidthCm").add_legend()
+sbn.FacetGrid(data,hue="Species",size=6).map(plt.scatter, "SepalLengthCm", "PetalLengthCm").add_legend()
+sbn.FacetGrid(data,hue="Species",size=6).map(plt.scatter, "SepalWidthCm", "PetalWidthCm").add_legend()
+
+#### Pair Plots
+A more advanced technique for plotting all 3 species of iris flower against all combinations of multiple measurement variables together, the use of a pair plot will confirm the work done by our Facet Grids for the combinations specified above, but also test other less obvious combinations for correlation.
+
